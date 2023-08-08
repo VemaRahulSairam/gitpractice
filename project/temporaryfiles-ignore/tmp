@@ -1,0 +1,30 @@
+FROM openjdk:17
+WORKDIR /app
+
+# Copy the Spring Boot application JAR file into the container
+
+COPY Kafkalogin-1-0.0.1-SNAPSHOT.jar /app
+RUN chmod +x /app/Kafkalogin-1-0.0.1-SNAPSHOT.jar
+
+ 
+
+# Expose the port your Spring Boot application is running on (change to the actual port number)
+
+EXPOSE 8080
+
+
+# Environment variables for PostgreSQL database connection
+
+ENV DB_HOST=localhost:8080
+
+ENV DB_PORT=5432
+
+ENV DB_NAME=postgres
+
+ENV DB_USERNAME=postgres
+
+ENV DB_PASSWORD=1234
+
+# Start the Spring Boot application
+
+CMD ["java", "-jar", "/app/Kafkalogin-1-0.0.1-SNAPSHOT.jar"]
